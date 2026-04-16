@@ -2,10 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    protected $primaryKey = 'npm';  // Custom PK
+    public $incrementing = false;  // Karena NPM biasanya input manual
+    protected $keyType = 'string';
+
     protected $fillable = [
         'npm',
         'username',
@@ -15,12 +20,9 @@ class User extends Authenticatable
         'password',
     ];
 
-    // Beritahu Laravel bahwa Primary Key-nya -> 'npm'
-    protected $primaryKey = 'npm';
-
-    // Jika NPM bukan angka yang auto-increment (misal: string/manual input)
-    public $incrementing = false;
-
-    // Tipe data primary key-nya
-    protected $keyType = 'string'; // atau 'int' sesuai migrasimu
+    // Relasi: Satu user bisa punya banyak pinjaman
+    public function loans(): HasMany
+    {
+        return $this->hasMany(Loan::class, 'user_npm', 'npm');
+    }
 }
