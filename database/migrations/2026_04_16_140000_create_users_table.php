@@ -11,7 +11,7 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id('npm');  // Menggunakan npm sebagai Primary Key sesuai ERD
+            $table->id('npm');  // Menggunakan npm sebagai Primary Key
             $table->string('username', 255);
             $table->string('first_name', 255);
             $table->string('last_name', 255);

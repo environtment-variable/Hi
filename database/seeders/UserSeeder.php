@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'npm' => '5520124000',  // Contoh NPM Admin
+            'npm' => '5520124000',
             'username' => 'admin',
             'first_name' => 'Admin',
             'last_name' => 'Library',
