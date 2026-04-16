@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Bookshelf extends Model
 {
     protected $table = 'bookshelfs';
-    
+
+    public $timestamps = false;
+
     protected $fillable = ['code', 'name'];
 
     public function books(): HasMany
